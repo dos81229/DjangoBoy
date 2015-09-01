@@ -21,7 +21,7 @@ class Post(models.Model): # Django 的 Field 有兩種值可以設定: blank and
 
 
 
-class Restaurant(models.Model):
+class Restaurant(models.Model): 
 	name			= models.CharField(max_length=100)
 	phone_number	= models.CharField(max_length=20)
 	address			= models.CharField(max_length=50)
