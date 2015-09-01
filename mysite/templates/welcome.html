@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>張開你的腿</title>
+	<style>
+		body{
+			background-image: url(http://pic.pimg.tw/lovetabris/1383764945-2767260218.jpg);
+			background-repeat:no-repeat;
+			background-position: 60% 0%;
+		}
+	</style>
+</head>
+<body>
+	<h2><a href="{% url 'trips.views.home' %}">回首頁</a></h2>
+	<form action="/bitch_face/"  method="get">
+		<h2>長大實在是很麻煩的一件事啊</h2>
+		<br/>
+		<h2>上學上班實在無聊惹</h2>
+		<br/>
+		<h2>不如來測看看你腹黑的一面吧!</h2>
+		<br/>
+		<label for="user_name">請輸入姓名:</label>
+		<input id="user_name" type="text" name="user_name">
+		<input type="submit" value="檢視結果">
+	</form>
+
+	<em>{{ current_time }}</em>
+</body>
+</html>
