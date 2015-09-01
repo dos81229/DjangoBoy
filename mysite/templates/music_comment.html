@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>樂團評論</title>
+	<link href="//fonts.googleapis.com/css?family=Lemon" rel="stylesheet" type="text/css">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="//djangogirlstaipei.github.io/assets/css/style.css" rel="stylesheet" type="text/css">
+		<style>
+            body {
+               background-color: #FFFFFF;
+            }
+            em {
+                color: LightSeaGreen;
+            }
+            table{
+				border: 2px solid ;
+				color: #FFD700;
+            }
+            h2{
+				color:#8B4513;
+            }
+
+            p{
+				color:#008B8B;
+            }
+
+            th{
+             	border: 1px solid ;
+				color:#8B4513;
+             }
+
+            td{
+             	border: 1px solid ;
+             	color: #008B8B;
+             }
+        </style>
+</head>
+<body>
+	<h2><a href="{% url  'trips.views.band' %}">回前頁</a></h2>
+
+	<h2>{{ b.name }}樂評</h2>
+	{% if b.music_comment_set.all %}
+		<p>共有{{ b.music_comment_set.all|length }}條評論</p>
+		<table>
+
+		<tr>
+			<th>留言者</th>
+			<th>留言時間</th>
+			<th>評價</th>
+		</tr>
+
+		{% for music_comment in b.music_comment_set.all %}
+
+		
+		<tr>
+			<td class="post-content">{{ music_comment.user  }}</td>
+			<td class="post-content">{{ music_comment.created_at|date:"Y /m /d" }}</td>
+			<td class="post-content">{{ music_comment.content }}</td>
+		</tr>
+
+		{% endfor %}
+		</table>
+	
+	{% else %}
+		<p>Legacy目前無樂團</p>
+	{% endif %}
+
+	<br /><br />
+
+	<h2>留言吧! 一起加入樂團人!</h2>
+	<form action="." method="POST">
+		<table>
+				
+            {% csrf_token %}
+            {{ f.as_table }}
+            <input type="hidden" name="ok" value="yes">
+        	<input type="submit" value="給予評價" >
+
+        </table>
+    </form>
+
+</body>
+</html>
