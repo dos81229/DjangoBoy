@@ -11,6 +11,6 @@ admin.site.register(Member)
 admin.site.register(Music_Comment)
 admin.site.register(Thing)
 admin.site.register(ImageThing)
-admin.site.register(BitchFace)
+admin.site.register(BitchFace) 
 
 
