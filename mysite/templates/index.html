@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>餐廳首頁</title>
+	<style>
+		body{
+			background-image: url(http://www.negharfonooni.com/wp-content/uploads/eat.jpg);
+			background-repeat:no-repeat;
+			background-position: 50% 10%;
+		}
+	</style>
+</head>
+<body>
+	<h2><a href="{% url 'trips.views.home' %}">回首頁</a></h2>
+
+	<h2>歡迎來到餐廳市集</h2>
+	<p><a href="/accounts/register/">註冊</a></p>
+
+	<p><a href="/accounts/login/">登入</a></p>
+
+
+	<em>現在時間: {{current_time}}</em>
+</body>
+</html>
+
+
