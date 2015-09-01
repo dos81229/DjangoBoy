@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>餐廳</title>
+	<link href="//fonts.googleapis.com/css?family=Lemon" rel="stylesheet" type="text/css">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="//djangogirlstaipei.github.io/assets/css/style.css" rel="stylesheet" type="text/css">
+	<style>
+            body {
+                background-color: #FFFFFF;
+				background-repeat:no-repeat;
+				background-position: 50% 10%;
+            }
+            em {
+                color: LightSeaGreen;
+            }
+            table{
+				border: 2px solid ;
+				color: #FFD700;
+            }
+            h2{
+				color:#8B4513;
+            }
+
+            p{
+				color:#008B8B;
+            }
+
+            th{
+             	border: 1px solid ;
+				color:#8B4513;
+             }
+
+            td{
+             	border: 1px solid ;
+             	color: #008B8B;
+             }
+        </style>
+        
+</head>
+<body>
+	<h2><a href="{% url 'trips.views.home' %}">回首頁</a></h2>
+	<h2>餐廳列表</h2>
+	<form action="/menu/" method="get">
+	<table>
+		<tr>
+			<th>請選擇</th>
+			<th>請選擇</th>
+			<th>店名</th>
+			<th>電話</th>
+			<th>地址</th>
+
+		</tr>
+		{% for r in restaurants %}
+		<tr>
+			<!--<td><input type="radio" name="id" value="{{r.id}}"></td>-->
+			<td><a href="/menu/{{r.id}}/">餐廳菜單</a></td>
+			<td><a href="/comment/{{r.id}}/">餐廳評論</a></td>
+			<td>{{ r.name }}</td>
+			<td>{{ r.phone_number }}</td>
+			<td>{{ r.address }}</td>
+		</tr>
+		{%  endfor %}
+	</table>
+	
+	<!--<input type="submit" value="觀看Menu">-->
+	</form>
+</body>
+</html>
