@@ -114,7 +114,7 @@ TEMPLATE_CONTEXT_PROCESSOR = (
 )
 
 CSRF_FAILURE_VIEW = 'custom.csrf.views.csrf_rejected'
-
+ 
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_HOST_USER  = 'user'
 EMAIL_HOST_PASSWORD = 'password'
