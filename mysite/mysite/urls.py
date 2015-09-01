@@ -22,7 +22,7 @@ urlpatterns = patterns('',
     url(r'^restaurants/$', 'trips.views.restaurants_list'),
     url(r'^comment/(?P<id>\d+)/$', 'trips.views.comment'),
 
-    url(r'^index/$',  'trips.views.index'),
+    url(r'^index/$',  'trips.views.index'), 
     url(r'^accounts/login/$',  'trips.views.login'),
     url(r'^accounts/auth/$',  'trips.views.auth_view'),
     url(r'^accounts/loggedin/$', 'trips.views.loggedin'),
