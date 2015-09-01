@@ -18,4 +18,4 @@ ALLOWED_HOSTS = ['*']
 # Turn off DEBUG mode
 DEBUG = False
 
-TEMPLATE_DEBUG = False
+TEMPLATE_DEBUG = False 
