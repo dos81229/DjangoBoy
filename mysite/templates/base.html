@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>{% block title %}{% endblock %}</title>
+</head>
+<body>
+	<nav>
+	<a href="{% url 'trips.views.home' %}">回首頁</a>
+
+	<!--<h2>歡迎來到餐廳市集</h2>-->
+	<a href="/accounts/register/">註冊</a>
+
+	<a href="/accounts/login/">登入</a>
+
+	<em>現在時間: {{current_time}}</em>
+	</nav>
+	
+	<h2>{% block h2 %}{% endblock %}</h2>
+	<h2>{% block content %}{% endblock %}</h2>
+</body>
+</html>
