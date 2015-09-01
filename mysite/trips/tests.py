@@ -17,7 +17,7 @@ def random_string(length=10):
     return u''.join(random.choice(string.ascii_letters) for x in range(length))
 
 
-class ThingTestCase(TestCase):
+class ThingTestCase(TestCase): 
 
     def create_thing(self, **kwargs):
         "Create a random test thing."
