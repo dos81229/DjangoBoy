@@ -13,7 +13,7 @@ class Post(models.Model): # Django 的 Field 有兩種值可以設定: blank and
 	created_at 		= models.DateTimeField(auto_now_add=True) 
 	food 			= models.TextField(blank=True)
 	habit			= models.TextField(blank=True)
-	relationship	= models.CharField(max_length=100)
+	relationship		= models.CharField(max_length=100)
 
 
 	def __str__(self):
@@ -23,7 +23,7 @@ class Post(models.Model): # Django 的 Field 有兩種值可以設定: blank and
 
 class Restaurant(models.Model): 
 	name			= models.CharField(max_length=100)
-	phone_number	= models.CharField(max_length=20)
+	phone_number		= models.CharField(max_length=20)
 	address			= models.CharField(max_length=50)
 
 	def __str__(self):
