@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Django Boy's Universe</title>
+	<link href="//fonts.googleapis.com/css?family=Lemon" rel="stylesheet" type="text/css">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="//djangogirlstaipei.github.io/assets/css/style.css" rel="stylesheet" type="text/css">
+</head>
+</head>
+<body>
+	<div class="header">
+        <h1 class="site-title text-center">
+            <a href="/">Django Boy's Universe</a>
+        </h1>
+    </div>
+    <div class="container post post-detail">
+    	<div class="post-heading">
+    		<h1 class="title">
+    			<a href="{% url 'post_detail' id=post.id %}">{{ post.title }}</a>
+    		</h1>
+    		<div class="date">{{ post.created_at|date:"Y /m /d" }}</div>
+    	</div>
+    	<div class="location">
+    		<i class="fa fa-map-maker"></i>
+    		<span id="location-content">出沒地點：{{ post.location }}</span>
+    	</div>
+    	<div id="map-canvas" class="map"></div>
+    	<div class="post-content">
+    		自我介紹：{{ post.content }}
+    	</div>
+        <p></p>
+        <div class="food">
+            喜歡的食物：{{ post.food }}
+        </div>
+        <p></p>
+        <div class="price">
+            好習慣：{{ post.habit }}
+        </div>
+        <p></p>
+        <div class="is_spicy">
+            感情狀況：{{ post.relationship }}
+        </div>
+        <p></p>
+
+    	<hr class="fancy-line">
+    	<img class="photo" src="{{ post.photo }}" alt="">
+    </div>
+    <em>{{ current_time }}</em>
+</body>
+</html>

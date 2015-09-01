@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>肚子好餓，下面給你吃</title>
+	<link href="//fonts.googleapis.com/css?family=Lemon" rel="stylesheet" type="text/css">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="//djangogirlstaipei.github.io/assets/css/style.css" rel="stylesheet" type="text/css">
+		<style>
+            body {
+               background-color: #FFFFFF;
+            }
+            em {
+                color: LightSeaGreen;
+            }
+            table{
+				border: 2px solid ;
+				color: #FFD700;
+            }
+            h2{
+				color:#8B4513;
+            }
+
+            p{
+				color:#008B8B;
+            }
+
+            th{
+             	border: 1px solid ;
+				color:#8B4513;
+             }
+
+            td{
+             	border: 1px solid ;
+             	color: #008B8B;
+             }
+        </style>
+</head>
+<body>
+	<!--ForeignKey 用INSTANCE.{LOWERCASE_CLASS}_set.all()-->
+	<h2><a href="{% url  'trips.views.restaurants_list' %}">回前頁</a></h2>
+
+	<h2>{{ r.name }}的Menu</h2>
+	{% if r.food_set.all %}
+		<p>本餐廳共有{{ r.food_set.all|length }}道菜</p>
+		<table>
+
+		<tr>
+			<th>菜名</th>
+			<th>價錢</th>
+			<th>評價</th>
+		</tr>
+
+		{% for food in r.food_set.all %}
+
+		
+		<tr>
+			<td class="post-content">{{ food.name  }}</td>
+			<td class="post-content">{{ food.price }}</td>
+			<td class="post-content">{{ food.comment }}</td>
+		</tr>
+
+		{% endfor %}
+		</table>
+	
+	{% else %}
+		<p>本餐廳什麼都沒有賣</p>
+	{% endif %}
+
+
+</body>
+</html>
