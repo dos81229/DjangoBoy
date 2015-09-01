@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Send Email</title>
+</head>
+<body>
+	<h2><a href="{% url 'trips.views.home' %}">回首頁</a></h2>
+	<h2><a href="{% url 'trips.views.contact' %}">意見回饋</a></h2>
+
+
+	{% if success %}
+		
+		<h2>資料傳輸</h2>
+
+		<p>信箱:{{ email }}</p>
+		<p>訊息:{{ message }}</p>
+		<p>全名:{{ full_name }}</p>
+
+	
+	{% else %}
+	<form action="." method="POST">
+		{% csrf_token %}
+		{{ contact_form.as_p }}
+	<input type="submit" value="信件送出">
+	<input type="reset" value="Reset">
+	</form>
+
+	{% endif %}
+
+</body>
+</html>
