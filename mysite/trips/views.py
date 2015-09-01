@@ -1,14 +1,14 @@
-from django.shortcuts import render  #render 是渲染的意思，渲染一個頁面以返回請求，返回的是一個 HttpResponse 對象
-from django.http import HttpResponse  #request
+from django.shortcuts import render  			#render 是渲染的意思，渲染一個頁面以返回請求，返回的是一個 HttpResponse 對象
+from django.http import HttpResponse 			#request
 from datetime import datetime
 
-from django.contrib import auth     	#使用者登入驗證
-from django.core.context_processors import csrf  #使用者登入驗證
-from django.contrib.auth.forms import UserCreationForm # Django 中 auth 應用中內建的註冊表單模型
+from django.contrib import auth      			#使用者登入驗證
+from django.core.context_processors import csrf  	#使用者登入驗證
+from django.contrib.auth.forms import UserCreationForm  # Django 中 auth 應用中內建的註冊表單模型
 
-from django.template import RequestContext  #只有當你使用 RequestContext 的時候 並且 你的 TEMPLATE_CONTEXT_PROCESSORS 設置包含 "django.core.context_processors.auth" 的時候，這個變量才是有效的。
-from django.http import HttpResponseRedirect #他吃一個 pattern 參數，如果 return 了這個物件，則會將頁面重導至 pattern 對應的 action
-from django.core.mail import send_mail,mail_admins  #寄電子信箱
+from django.template import RequestContext  		#只有當你使用 RequestContext 的時候 並且 你的 TEMPLATE_CONTEXT_PROCESSORS 設置包含 "django.core.context_processors.auth" 的時候，這個變量才是有效的。
+from django.http import HttpResponseRedirect 		#他吃一個 pattern 參數，如果 return 了這個物件，則會將頁面重導至 pattern 對應的 action
+from django.core.mail import send_mail,mail_admins  	#寄電子信箱
 from django.conf import settings
 from django.views.decorators.csrf import csrf_exempt
 
@@ -134,10 +134,10 @@ def post_detail(request, id): #宣告顯示Post的個別物件
 				  'post.html',
 				  {'post': post})	
 
-def message(request):  #宣告Post留言板
-	if request.method == 'POST': #要求方法為POST
+def message(request):  				 #宣告Post留言板
+	if request.method == 'POST': 		 #要求方法為POST
 		form = MessageForm(request.POST) #宣告form 為 form.py中的MessageForm之定義物件
-		if form.is_valid():#form驗證處理
+		if form.is_valid():		 #form驗證處理
 			title 		 = form.cleaned_data['留言者'] #cleaned_data將資料轉換成python 型別
 			photo		 = form.cleaned_data['相片']
 			content		 = form.cleaned_data['留言']
@@ -152,7 +152,7 @@ def message(request):  #宣告Post留言板
 					 food 	  	  =food,
 					 habit 	  	  =habit,
 					 relationship =relationship)
-			m.save()#如果驗證通過的話。把form的數據添加到數據庫裡
+			m.save() 	#如果驗證通過的話。把form的數據添加到數據庫裡
 		return HttpResponseRedirect('/message/')
 
 	else :
