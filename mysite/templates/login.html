@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>登入</title>
+		<style>
+		body{
+			background-image: url(http://ax-tour.com/wp-content/uploads/%E8%A6%86%E7%9B%86%E5%AD%90%E9%A6%AC%E5%8D%A1%E9%BE%8D.jpg);
+			background-repeat:no-repeat;
+			background-position: 50% 0%;
+		}
+	</style>
+</head>
+<body>
+	<h2>使用者登入</h2>
+	<form action="/accounts/auth/" method="POST">
+		{% csrf_token %}
+		<label for="username">帳號:</label>
+		<input type="text" name="username" value="" id="username">
+		<br/><br/>
+
+		<label for="password">密碼:</label>
+		<input type="password" name="password" value="" id="password">
+		<br/><br/>
+
+		<input type="submit" value="確認">
+	</form>
+</body>
+</html>
