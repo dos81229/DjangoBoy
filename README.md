@@ -16,7 +16,7 @@ Python 下有非常多網站框架可以使用
 
 為了成為能夠讓DjangoGirls 能夠看上一眼(一瞥也好) 的男人
 
-於是便立志成為Djangoboy  阿 ! ! ! 
+於是便立志成為Djangoboy  ! ! ! 
 
 PS: 當然很多基礎都是從DjangoGirls 開始一點一滴學起的。
 http://djangogirlstaipei.herokuapp.com/tutorials/
