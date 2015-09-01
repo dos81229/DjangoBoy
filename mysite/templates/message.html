@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>留言板</title>
+	<link href="//fonts.googleapis.com/css?family=Lemon" rel="stylesheet" type="text/css">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="//djangogirlstaipei.github.io/assets/css/style.css" rel="stylesheet" type="text/css">
+		<style>
+            body {
+               background-color: #FFFFFF;
+            }
+            em {
+                color: LightSeaGreen;
+            }
+            table{
+				border: 2px solid ;
+				color: #FFD700;
+            }
+            h2{
+				color:#8B4513;
+            }
+
+            p{
+				color:#008B8B;
+            }
+
+            th{
+             	border: 1px solid ;
+				color:#8B4513;
+             }
+
+            td{
+             	border: 1px solid ;
+             	color: #008B8B;
+             }
+        </style>
+</head>
+<body>
+	<h2>
+		<a href ="{% url 'trips.views.home' %}">回首頁</a>
+	</h2>
+	<table>
+		{% for message in messages %}
+			<tr>
+				<th class="post-heading">
+					{% if message.photo %}
+					<a href ="{{ message.photo }}">{{ message.title }}</a>
+				
+					{% else %}
+					{{ message.title }}
+
+					{% endif %}
+
+					說:{{ message.ip }}
+				</th>
+				<th>出沒地點</th>
+				<th>喜歡的食物</th>
+				<th>好習慣</th>
+				<th>感情狀況</th>
+			</tr>
+			<tr>
+				<!--<td><label for="content"></label></td>
+				<td><textarea id="content"  name="content">
+					{{ message.content }}</textarea></td>-->
+				<td class="post-content">{{ message.content }}</td>
+				<td class="post-content">{{ message.location }}</td>
+				<td class="post-content">{{ message.food }}</td>
+				<td class="post-content">{{ message.habit }}</td>
+				<td class="post-content">{{ message.relationship }}</td>
+			</tr>
+
+
+		{% endfor %}
+	</table>
+	
+	<h2>留言吧! 一起加入DjangoBoy：</h2>
+	<form action=".", method="POST">
+		<table>
+			<!-- csrf_token，Cross Site Request Forgery protection 為了防止別的網站對你的站台做攻擊。-->
+			{% csrf_token %}
+			{{ form.as_table }}
+
+		</table>
+			<p><input type="submit", value="確認"></p>
+	</form>
+</body>
+</html>
