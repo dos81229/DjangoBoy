@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>菜單</title>
+		<style>
+            body {
+               background-color: Lightyellow;
+            }
+            em {
+                color: LightSeaGreen;
+            }
+        </style>
+</head>
+<body>
+	<h1 class="name">
+    			<a href="{% url 'menu_detail' id=food.id %}">{{ food.name }}</a>
+    </h1>
+	<ul>
+		<li>菜名: 		{{ food.name  }}</li>
+		<li>價錢: 		{{ food.price }}</li>
+		<li>評價: 		{{ food.content }}</li>
+	</ul>
+
+</body>
+</html>
