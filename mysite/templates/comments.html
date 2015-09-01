@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>美食評價</title>
+	<link href="//fonts.googleapis.com/css?family=Lemon" rel="stylesheet" type="text/css">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="//djangogirlstaipei.github.io/assets/css/style.css" rel="stylesheet" type="text/css">
+	<style>
+		body {
+               background-color: #FFFFFF;
+            }
+		table{
+				border: 2px solid ;
+				color: #FFD700;
+            }
+            h2{
+				color:#8B4513;
+            }
+
+            p{
+				color:#008B8B;
+            }
+
+            th{
+             	border: 1px solid ;
+				color:#8B4513;
+             }
+
+            td{
+             	border: 1px solid ;
+             	color: #008B8B;
+             }
+             input[type=submit]{
+             	padding:5px 15px;
+             	background: #FA8072;
+             	border:0 none;
+				cursor:pointer;
+				-webkit-border-radius: 5px;
+				border-radius: 5px;
+             }
+             
+
+	</style>
+</head>
+<body>
+	<h2><a href="{% url 'trips.views.restaurants_list' %}">回前頁</a>
+	</h2>
+	<h2>{{r.name}}的評價</h2>
+	{% if r.comment_set.all %}
+		<p>目前共有{{ r.comment_set.all|length }} 條評價</p>
+	<table>
+		<tr>
+			<th>留言者</th>
+			<th>留言時間</th>
+			<th>評價</th>
+		</tr>
+		{% for c in r.comment_set.all %}
+		<tr>
+			<td class="post-content">{{ c.user }}</td>
+			<td class="post-content">{{ c.created_at|date:"Y /m /d" }}</td>
+			<td class="post-content">{{ c.content }}</td>
+		</tr>
+
+		{% endfor %}
+	</table>
+	
+	{% else %}
+	<p>無評價</p>	
+	
+	{% endif %}
+
+	<br /><br />
+	
+	<h2>留言吧! 一起加入DjangoBoy：</h2>
+		
+			<!--<tr>
+				<td><label for="user">留言者:</label></td>
+				<td><input id="user" type="text" name="user" ></td>
+			</tr>
+			<tr>
+				<td><label for="email">信箱:</label></td>
+				<td><input id="email" type="text" name="email" ></td>
+			</tr>
+			<tr>
+				<td><label for="content">留言:</label></td>
+				<td>
+					<textarea rows="10" cols="48" id="content" name="content" ></textarea>
+				</td>
+			</tr>-->
+			{% if f.errors %}
+			<p style="color:red;">
+				請確認錯誤{{ f.errors|pluralize}} below.
+			</p>
+			{% endif %}
+		<form action="." method="POST">
+			<table>
+				
+            {% csrf_token %}
+            {{ f.as_table }}
+            <input type="hidden" name="ok" value="yes">
+        	<input type="submit" value="給予評價" >
+
+            </table>
+        </form>
+        
+        <br/><br/>
+
+</body>
+</html>
